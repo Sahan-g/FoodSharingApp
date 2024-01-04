@@ -8,21 +8,37 @@ class LoginPage extends StatelessWidget {
     return SafeArea(
       child: (MaterialApp(
         home: Scaffold(
-          backgroundColor: Colors.green[100],
+          backgroundColor: Colors.blue[900],
           body: Column(
             children: [
               const SizedBox(
                 height: 20,
               ),
               const Text(
-                "hello Welcome back",
+                "Hello, Welcome back",
                 style: TextStyle(
-                  color: Colors.black26,
+                  color: Colors.white,
+                  fontSize: 20,
                 ),
               ),
-              const Text("Login to Continue"),
+              const SizedBox(
+                height: 16,
+              ),
+              const Text(
+                "Login to Continue",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               const TextField(
-                decoration: InputDecoration(hintText: "Username"),
+                decoration: InputDecoration(
+                  hintText: "Username",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(12))),
+                ),
               ),
               const TextField(
                 decoration: InputDecoration(hintText: "Password"),
