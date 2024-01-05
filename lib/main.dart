@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodsharingplatform/login_page.dart';
+import 'package:foodsharingplatform/pages/login_page.dart';
+import 'package:foodsharingplatform/styles/app_colors.dart';
 
 void main() {
   runApp(FoodSharingApp());
@@ -10,6 +11,12 @@ class FoodSharingApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LoginPage();
+    return MaterialApp(
+      home: const LoginPage(),
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+        scaffoldBackgroundColor: AppColors.background,
+      ),
+    );
   }
 }
