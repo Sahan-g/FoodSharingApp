@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "612583858973",
+    "project_id": "fir-auth-4784b",
+    "storage_bucket": "fir-auth-4784b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612583858973:android:ae061cffb403a4117c37f4",
+        "android_client_info": {
+          "package_name": "com.example.foodsharingplatform"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhWNji3aYFHT8473bauEdgAaDVD7wDNso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

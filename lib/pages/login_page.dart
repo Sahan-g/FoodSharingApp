@@ -1,8 +1,41 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:foodsharingplatform/pages/home_page.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final _emailController = TextEditingController();
+  final _passWordController = TextEditingController();
+
+  Future signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passWordController.text.trim());
+    } catch (e) {
+      final snackBar = SnackBar(
+        content: Text("Sign-in failed plase check your Email and Password"),
+        duration: Duration(seconds: 3),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _emailController.dispose();
+    _passWordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +71,7 @@ class LoginPage extends StatelessWidget {
                   height: 20,
                 ),
                 TextField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                     hintText: "Username",
                     border: const OutlineInputBorder(
@@ -51,6 +85,7 @@ class LoginPage extends StatelessWidget {
                   height: 16,
                 ),
                 TextField(
+                  controller: _passWordController,
                   decoration: InputDecoration(
                     hintText: "Password",
                     border: const OutlineInputBorder(
@@ -79,9 +114,7 @@ class LoginPage extends StatelessWidget {
                   width: double.infinity,
                   height: 48,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushReplacementNamed('/home');
-                    },
+                    onPressed: () => {signIn()},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.amber,
                       foregroundColor: Colors.black,

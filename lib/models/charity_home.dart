@@ -5,7 +5,7 @@ class CharityHome extends User {
   List<Request> requests = [];
 
   CharityHome(
-    int id,
+    String id,
     String username,
     String password,
     String email,

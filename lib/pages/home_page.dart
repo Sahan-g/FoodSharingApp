@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodsharingplatform/styles/app_colors.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  final user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +15,34 @@ class HomePage extends StatelessWidget {
         title: Text("Food For All"),
         centerTitle: false,
       ),
-      body: Center(
-        child: ListView(
-          children: mockRestaurnatsList(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text(user!.uid),
+            // Wrap the ListView with a Container and specify a height
+            Container(
+              height: 500, // Set an appropriate height
+              child: Center(
+                child: ListView(
+                  children: mockRestaurantsList(),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
+}
+
+// ...
+
+List<Widget> mockRestaurantsList() {
+  List<Widget> restaurants = [];
+  for (int i = 0; i < 20; i++) {
+    restaurants.add(_foodItem());
+  }
+  return restaurants;
 }
 
 Widget _foodItem() {

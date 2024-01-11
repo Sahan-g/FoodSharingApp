@@ -1,5 +1,5 @@
 abstract class User {
-  int id;
+  String id;
   String username;
   String password;
   bool isLoggedIn;
