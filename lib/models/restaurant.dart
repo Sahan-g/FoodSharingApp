@@ -7,7 +7,7 @@ class Restaurant extends User {
   List<FoodItem> foodItems = [];
 
   Restaurant(
-    int id,
+    String id,
     String username,
     String password,
     String name,
