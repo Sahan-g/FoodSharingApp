@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const primary = Color(0xffFbd512);
+  static const tabs = Color.fromARGB(255, 157, 132, 11);
   static const fontPrimary = Color(0xffD8D8D8);
   static const fontSecondary = Color(0xFF373737);
   static const disableFont = Color(0xffA7A7A7);
