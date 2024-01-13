@@ -50,11 +50,6 @@ class _HomePageState extends State<HomePage> {
           gap: 20,
         ),
       ),
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        title: const Text("Share Kindly"),
-        centerTitle: false,
-      ),
       body: _buildBody(selectedIndex),
     );
   }
