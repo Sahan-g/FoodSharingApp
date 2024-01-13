@@ -21,7 +21,8 @@ class HomePage extends StatelessWidget {
           children: [
             Text(user!.uid),
             // Wrap the ListView with a Container and specify a height
-            Expanded(
+            SizedBox(
+              height: 600,
               // Set an appropriate height
               child: Center(
                 child: ListView(
