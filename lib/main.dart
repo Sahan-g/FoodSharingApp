@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodsharingplatform/pages/home_page.dart';
 import 'package:foodsharingplatform/pages/login_page.dart';
-import 'package:foodsharingplatform/pages/main_page.dart';
+import 'package:foodsharingplatform/Auth/main_page.dart';
 import 'package:foodsharingplatform/styles/app_colors.dart';
 import "package:firebase_core/firebase_core.dart";
 import 'firebase_options.dart';

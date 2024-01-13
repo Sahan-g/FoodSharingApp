@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'package:foodsharingplatform/styles/app_colors.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,7 +13,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.background,
-        title: Text("Food For All"),
+        title: const Text("Share Kindly"),
         centerTitle: false,
       ),
       body: SingleChildScrollView(
@@ -20,13 +21,17 @@ class HomePage extends StatelessWidget {
           children: [
             Text(user!.uid),
             // Wrap the ListView with a Container and specify a height
-            Container(
-              height: 500, // Set an appropriate height
+            Expanded(
+              // Set an appropriate height
               child: Center(
                 child: ListView(
                   children: mockRestaurantsList(),
                 ),
               ),
+            ),
+            TextButton(
+              onPressed: () => FirebaseAuth.instance.signOut(),
+              child: const Text("Logout"),
             ),
           ],
         ),
