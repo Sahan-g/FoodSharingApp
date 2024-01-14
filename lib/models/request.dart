@@ -1,4 +1,4 @@
-import 'package:foodsharingplatform/models/food_Item.dart';
+import 'package:foodsharingplatform/models/food_item.dart';
 
 class Request {
   DateTime date;
