@@ -78,13 +78,11 @@ class _HomeTabState extends State<HomeTab> {
             return Center(child: Text('Error: ${snapshot.error}'));
           }
 
-          // Use the restaurantsData list to build your ListView
           return ListView.builder(
             itemCount: restaurants.length,
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  // Navigate to the food items page
                   _navigateToFoodItemsPage(
                     restaurants[index].id.toString(),
                     restaurants[index].name.toString(),
