@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:foodsharingplatform/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final VoidCallback showRegisterPage;
+  const LoginPage({super.key, required this.showRegisterPage});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -86,6 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextField(
                   controller: _passWordController,
+                  obscureText: true,
                   decoration: InputDecoration(
                     hintText: "Password",
                     border: const OutlineInputBorder(
@@ -195,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: widget.showRegisterPage,
                       style: TextButton.styleFrom(
                         foregroundColor: Colors.amber,
                       ),
