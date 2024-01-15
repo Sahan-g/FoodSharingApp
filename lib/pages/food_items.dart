@@ -69,12 +69,21 @@ class _FoodItemsPageState extends State<FoodItemsPage> {
                         icon: Icon(Icons.add, color: Colors.green),
                         onPressed: () {
                           // Navigate to a new screen here
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => MakeRequestPage(),
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => MakeRequestPage(),
+                          //   ),
+                          // );
+                          showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              context: context,
+                              builder: (context) {
+                                return MakeRequestPage(
+                                    restaurantid: widget.id,
+                                    itemId: '${fooditems[index].id}');
+                              });
                         },
                       ),
                     ),
@@ -99,6 +108,7 @@ class _FoodItemsPageState extends State<FoodItemsPage> {
       print("Document data: ${doc.data()}");
 
       return FoodItem(
+        id: doc.id,
         name: doc['itemName'] as String,
         quantity: (doc['availableQuantity'] as num).toInt(),
         description: doc['description'] as String,
