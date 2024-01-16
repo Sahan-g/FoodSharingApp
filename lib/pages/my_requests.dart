@@ -127,8 +127,10 @@ class _MyRequestState extends State<MyRequest> {
                                       ],
                                     ),
                                     const SizedBox(height: 8),
-                                    Text("Address: ${restaurant.address}"),
-                                    Text("Phone: ${restaurant.phone}"),
+                                    Text(
+                                        "Address: ${restaurant.address}"), // phone icon
+                                    Text(
+                                        "Phone: ${restaurant.phone}"), //location icon
                                   ],
                                 ),
                               ),

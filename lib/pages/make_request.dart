@@ -34,8 +34,8 @@ class _MakeRequestPageState extends State<MakeRequestPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 154, 154, 154),
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 154, 154, 154),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(24),
           topRight: Radius.circular(24),
@@ -225,13 +225,13 @@ Future<void> makeRequest(Request r, String itemId) async {
           .doc(itemId)
           .get();
 
-      final oldFoodItem = await FirebaseFirestore.instance
+      final oldFoodItem = FirebaseFirestore.instance
           .collection('Restaurant')
           .doc(r.restaurantId)
           .collection('foodItems')
           .doc(itemId);
-      oldFoodItem.update(
-          {'availableQuantity': snapshot['availableQuantity'] - r.quantity});
+      // oldFoodItem.update(
+      //     {'availableQuantity': snapshot['availableQuantity'] - r.quantity});
       DocumentReference foodItemRef = FirebaseFirestore.instance
           .collection("Restaurant")
           .doc(r.restaurantId)
@@ -239,7 +239,7 @@ Future<void> makeRequest(Request r, String itemId) async {
           .doc(itemId);
 
       DocumentSnapshot foodItemSnapshot = await transaction.get(foodItemRef);
-      int currentQuantity = foodItemSnapshot['quantity'];
+      int currentQuantity = foodItemSnapshot['availableQuantity'];
 
       transaction.update(foodItemRef, {
         'availableQuantity': currentQuantity - r.quantity,
