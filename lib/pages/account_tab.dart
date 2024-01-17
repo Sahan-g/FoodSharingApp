@@ -1,11 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:foodsharingplatform/Auth/main_page.dart';
 import 'package:foodsharingplatform/models/charity_home.dart';
+import 'package:foodsharingplatform/pages/edit_account_page.dart';
+import 'package:foodsharingplatform/pages/login_page.dart';
 import 'package:foodsharingplatform/styles/app_colors.dart';
 
 class AccountTab extends StatefulWidget {
-  const AccountTab({Key? key});
+  const AccountTab({super.key});
 
   @override
   State<AccountTab> createState() => _AccountTabState();
@@ -45,18 +48,25 @@ class _AccountTabState extends State<AccountTab> {
       appBar: AppBar(
         title: Row(
           children: [
-            Icon(Icons.account_box),
-            SizedBox(
+            const Icon(Icons.account_box),
+            const SizedBox(
               width: 20,
             ),
             const Text(
               'My Account',
             ),
-            Expanded(
+            const Expanded(
                 child: SizedBox(
               child: null,
             )),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.edit))
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const EditAccount()));
+                },
+                icon: const Icon(Icons.edit))
           ],
         ),
         backgroundColor: const Color.fromARGB(255, 10, 53, 88),
@@ -77,7 +87,7 @@ class _AccountTabState extends State<AccountTab> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 80,
                   ),
                   Container(
@@ -199,7 +209,11 @@ class _AccountTabState extends State<AccountTab> {
                     child: ElevatedButton(
                       onPressed: () async {
                         await _auth.signOut();
-                        Navigator.of(context).pop();
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MainPage()),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.amber,

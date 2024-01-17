@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
-import 'package:foodsharingplatform/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
@@ -21,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
           email: _emailController.text.trim(),
           password: _passWordController.text.trim());
     } catch (e) {
-      final snackBar = SnackBar(
+      const snackBar = SnackBar(
         content: Text("Sign-in failed plase check your Email and Password"),
         duration: Duration(seconds: 3),
       );
@@ -32,7 +31,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _emailController.dispose();
     _passWordController.dispose();
     super.dispose();
