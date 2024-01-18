@@ -61,8 +61,8 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text(
+        backgroundColor: const Color.fromARGB(255, 10, 53, 88),
+        title: const Text(
           "Restaurants List",
           style: TextStyle(color: Colors.white),
         ),
@@ -71,7 +71,7 @@ class _HomeTabState extends State<HomeTab> {
         future: getRestaurantsData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (snapshot.hasError) {

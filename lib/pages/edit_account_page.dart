@@ -20,7 +20,7 @@ class _EditAccountState extends State<EditAccount> {
   Future<CharityHome> getDetails() async {
     QuerySnapshot snapshot = await FirebaseFirestore.instance
         .collection('CharityUser')
-        .where('username',
+        .where('email',
             isEqualTo: FirebaseAuth.instance.currentUser!.email.toString())
         .get();
     var obj = snapshot.docs[0];
@@ -29,9 +29,9 @@ class _EditAccountState extends State<EditAccount> {
     _phoneController.text = obj['phoneNo'];
     return CharityHome(
         id: obj.id,
-        username: obj['username'],
+        username: obj['email'],
         password: " ",
-        email: obj['username'],
+        email: obj['email'],
         address: obj['address'],
         phone: obj['phoneNo'],
         name: obj['organizationName'],
@@ -176,7 +176,7 @@ class _EditAccountState extends State<EditAccount> {
   Future<void> editUserInfo(String address, String phone, String name) async {
     QuerySnapshot<Map<String, dynamic>> docs = await FirebaseFirestore.instance
         .collection('CharityUser')
-        .where('username', isEqualTo: FirebaseAuth.instance.currentUser!.email)
+        .where('email', isEqualTo: FirebaseAuth.instance.currentUser!.email)
         .get();
 
     if (docs.docs.isNotEmpty) {

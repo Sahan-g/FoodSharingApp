@@ -21,15 +21,15 @@ class _AccountTabState extends State<AccountTab> {
   Future<CharityHome> getDetails() async {
     QuerySnapshot snapshot = await FirebaseFirestore.instance
         .collection('CharityUser')
-        .where('username',
+        .where('email',
             isEqualTo: FirebaseAuth.instance.currentUser!.email.toString())
         .get();
     var obj = snapshot.docs[0];
     return CharityHome(
         id: obj.id,
-        username: obj['username'],
+        username: obj['email'],
         password: " ",
-        email: obj['username'],
+        email: obj['email'],
         address: obj['address'],
         phone: obj['phoneNo'],
         name: obj['organizationName'],
