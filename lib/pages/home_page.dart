@@ -1,47 +1,72 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:foodsharingplatform/pages/account_tab.dart';
+import 'package:foodsharingplatform/pages/home_tab.dart';
+import 'package:foodsharingplatform/pages/my_requests.dart';
 import 'package:foodsharingplatform/styles/app_colors.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePage extends StatefulWidget {
+  HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        title: const Text("Share Kindly"),
-        centerTitle: false,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Text(user!.uid),
-            // Wrap the ListView with a Container and specify a height
-            SizedBox(
-              height: 600,
-              // Set an appropriate height
-              child: Center(
-                child: ListView(
-                  children: mockRestaurantsList(),
-                ),
-              ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GNav(
+          backgroundColor: AppColors.background,
+          color: Colors.white,
+          activeColor: const Color.fromRGBO(255, 255, 255, 1),
+          tabBackgroundColor: const Color.fromARGB(255, 208, 180, 41),
+          padding: const EdgeInsets.all(16),
+          onTabChange: (value) {
+            setState(() {
+              selectedIndex = value;
+            });
+          },
+          tabs: const [
+            GButton(
+              icon: Icons.home,
+              text: 'Home',
             ),
-            TextButton(
-              onPressed: () => FirebaseAuth.instance.signOut(),
-              child: const Text("Logout"),
+            GButton(
+              icon: Icons.add_box,
+              text: 'My requests',
+            ),
+            GButton(
+              icon: Icons.account_box_outlined,
+              text: 'Account',
             ),
           ],
+          gap: 20,
         ),
       ),
+      body: _buildBody(selectedIndex),
     );
   }
-}
 
-// ...
+  Widget _buildBody(int selectedIndex) {
+    switch (selectedIndex) {
+      case 0:
+        return const HomeTab();
+      case 1:
+        return const MyRequest();
+      case 2:
+        return const AccountTab();
+      default:
+        return Container();
+    }
+  }
+}
 
 List<Widget> mockRestaurantsList() {
   List<Widget> restaurants = [];

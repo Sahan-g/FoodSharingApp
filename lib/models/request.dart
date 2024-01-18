@@ -1,19 +1,35 @@
-import 'package:foodsharingplatform/models/food_Item.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:foodsharingplatform/models/food_item.dart';
 
 class Request {
-  DateTime date;
-  List<FoodItem> requestedItems = [];
+  String id;
+  String date;
+  String fooditem;
+  int quantity;
+  String userid;
+  String restaurantId;
   String status;
 
-  Request(this.date, this.status, {List<FoodItem>? requestedItems})
-      : requestedItems = requestedItems ?? [];
+  Request(
+      {required this.id,
+      required this.date,
+      required this.fooditem,
+      required this.quantity,
+      required this.status,
+      required this.userid,
+      required this.restaurantId});
 
-  void addRequestedItem(FoodItem foodItem) {
-    requestedItems.add(foodItem);
-  }
+  factory Request.fromDocumentSnapshot(DocumentSnapshot snapshot) {
+    Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
 
-  void removeRequestedItem(FoodItem foodItem) {
-    requestedItems.remove(foodItem);
+    return Request(
+        id: snapshot.id,
+        fooditem: data['fooditem'],
+        status: data['status'],
+        quantity: data['quantity'],
+        userid: data['userid'],
+        restaurantId: data['restaurantid'],
+        date: data['date']);
   }
 
   void updateStatus(String newStatus) {
