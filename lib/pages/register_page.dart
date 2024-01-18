@@ -76,7 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 20,
                 ),
                 const Text(
-                  "Hello, There",
+                  "Hello ! ",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -86,7 +86,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   height: 16,
                 ),
                 const Text(
-                  "Register below to Continue",
+                  "Register below to continue",
                   style: TextStyle(
                     color: Colors.white,
                   ),

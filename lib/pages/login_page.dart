@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 const Text(
-                  "Hello, Welcome back",
+                  " Welcome back !",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 16,
                 ),
                 const Text(
-                  "Login to Continue",
+                  "Login to continue",
                   style: TextStyle(
                     color: Colors.white,
                   ),

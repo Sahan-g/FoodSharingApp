@@ -77,7 +77,7 @@ class _AccountTabState extends State<AccountTab> {
           future: charityFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
             } else if (!snapshot.hasData) {
@@ -219,7 +219,7 @@ class _AccountTabState extends State<AccountTab> {
                         backgroundColor: Colors.amber,
                         foregroundColor: Colors.black,
                       ),
-                      child: const Text("SignOut"),
+                      child: const Text("Sign Out"),
                     ),
                   ),
                 ],

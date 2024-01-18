@@ -25,7 +25,7 @@ class _FoodItemsPageState extends State<FoodItemsPage> {
           "${widget.restaurantName} ",
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.green,
+        backgroundColor: const Color.fromARGB(255, 10, 53, 88),
       ),
       body: FutureBuilder(
         future: getFoodItems(widget.id),

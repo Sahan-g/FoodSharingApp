@@ -63,7 +63,7 @@ class _HomeTabState extends State<HomeTab> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 10, 53, 88),
         title: const Text(
-          "Restaurants List",
+          "Restaurants ",
           style: TextStyle(color: Colors.white),
         ),
       ),
